@@ -1,7 +1,8 @@
 # D Bindings for Metal
 
 This is a package which provides D bindings for the Metal rendering library.
-Additionally bindings for MetalKit are provided, which can be enabled with the `MetalKit` version tag.
+Additionally bindings for MetalKit and IOSurface are provided, 
+which can be enabled with the `MetalKit` and `IOSurface` version tags respectively.
 
 ## NOTE
 

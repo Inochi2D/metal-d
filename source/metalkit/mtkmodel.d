@@ -9,10 +9,13 @@
     MTKMesh, MTKSubmesh, MTKMeshBuffer, MTKMeshBufferAllocator
 */
 module metalkit.mtkmodel;
+import metal.mtldevice;
 import foundation;
 import metalkit;
 import metal;
 import objc;
+
+import core.attribute : selector, optional;
 
 version(MetalKit):
 
@@ -32,7 +35,7 @@ extern class MTKMeshBufferAllocator : NSObject {
     /**
         Initializes a new texture loader object.
     */
-    override MTKMeshBufferAllocator init(MTLDevice device) @selector("init");
+    MTKMeshBufferAllocator init(MTLDevice device) @selector("initWithDevice:");
 
     /**
         The device object that the texture loader uses to create textures.

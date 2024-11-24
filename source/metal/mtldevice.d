@@ -15,12 +15,12 @@ import metal.mtlbuffer;
 import metal.mtltexture;
 import metal.mtllibrary;
 import metal;
+import iosurface;
 import foundation;
 import objc;
 
-import core.attribute : selector, optional;
 
-version (Have_iosurface_d) import iosurface;
+import core.attribute : selector, optional;
 
 /**
     Represents the functionality for families of GPUs.
@@ -638,7 +638,7 @@ public:
     /**
         Creates a texture instance that uses an IOSurface to store its underlying data.
     */
-    version(Have_iosurface_d)
+    version(IOSurface)
     MTLTexture newTexture(MTLTextureDescriptor descriptor, IOSurfaceRef surface, NSUInteger plane) @selector("newTextureWithDescriptor:iosurface:plane:");
 
     /**

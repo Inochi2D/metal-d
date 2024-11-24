@@ -9,6 +9,7 @@
     Bindings to Apple's Metal API.
 */
 module metalkit;
+import objc.os;
 
 version(MetalKit):
 mixin LinkFramework!("MetalKit");

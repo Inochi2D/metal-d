@@ -9,11 +9,18 @@
     MTKView
 */
 module metalkit.mtkview;
+import coregraphics.cggeometry;
 import foundation;
 import metalkit;
 import objc;
 
+import core.attribute : selector, optional;
+
 version(MetalKit):
+
+// HACK: This is temporary until I get UIKit and AppKit bindings made.
+alias UIView = NSObject;
+alias NSView = NSObject;
 
 /**
     This super-class which MTKView inherits from which depends on the
@@ -21,9 +28,9 @@ version(MetalKit):
 
     On macOS it is NSView, on all other apple platforms it's UIView.
 */
-static if (IsAppleMobileOS)
+static if (AppleOS)
     alias MTKViewSuperClass = UIView;
-else static if (IsAppleOS)
+else static if (AppleMobileOS)
     alias MTKViewSuperClass = NSView;
 else
     static assert(0, "Non-apple platform!");

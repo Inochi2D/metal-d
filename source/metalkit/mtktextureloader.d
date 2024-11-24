@@ -9,10 +9,14 @@
     MTKTextureLoader
 */
 module metalkit.mtktextureloader;
+import metal.mtldevice;
+import metal.mtltexture;
 import foundation;
 import metalkit;
 import metal;
 import objc;
+
+import core.attribute : selector, optional;
 
 version(MetalKit):
 
@@ -66,7 +70,7 @@ extern class MTKTextureLoader : NSObject {
     /**
         Initializes a new texture loader object.
     */
-    override MTKTextureLoader init(MTLDevice device) @selector("init");
+    MTKTextureLoader init(MTLDevice device) @selector("initWithDevice:");
 
     /**
         The device object that the texture loader uses to create textures.

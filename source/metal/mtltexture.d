@@ -13,6 +13,7 @@ import metal.mtlresource;
 import metal.mtlbuffer;
 import metal.mtldevice;
 import metal;
+import iosurface;
 import foundation;
 import objc;
 

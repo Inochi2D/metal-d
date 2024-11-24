@@ -13,8 +13,8 @@ import metal.mtldevice;
 import metal.mtltexture;
 import coregraphics.cggeometry;
 import coregraphics;
-import foundation;
 import metal;
+import foundation;
 import objc;
 
 import core.attribute : selector, optional;
