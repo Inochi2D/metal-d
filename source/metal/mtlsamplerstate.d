@@ -9,6 +9,8 @@
     MTLSamplerState
 */
 module metal.mtlsamplerstate;
+import metal.mtldevice;
+import metal.mtldepthstencil;
 import foundation;
 import metal;
 import objc;

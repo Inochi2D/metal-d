@@ -9,8 +9,9 @@
     MTLArgument
 */
 module metal.mtlargument;
-import foundation;
+import metal.mtltexture;
 import metal;
+import foundation;
 import objc;
 
 import core.attribute : selector, optional;

@@ -9,8 +9,9 @@
     MTLRenderPipeline
 */
 module metal.mtlrenderpipeline;
-import foundation;
+import metal.mtldevice;
 import metal;
+import foundation;
 import objc;
 
 import core.attribute : selector, optional;

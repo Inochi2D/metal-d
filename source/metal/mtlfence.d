@@ -9,8 +9,9 @@
     MTLTexture
 */
 module metal.mtlfence;
-import foundation;
+import metal.mtldevice;
 import metal;
+import foundation;
 import objc;
 
 import core.attribute : selector, optional;

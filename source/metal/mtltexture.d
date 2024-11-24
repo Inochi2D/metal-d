@@ -9,8 +9,11 @@
     MTLTexture
 */
 module metal.mtltexture;
-import foundation;
+import metal.mtlresource;
+import metal.mtlbuffer;
+import metal.mtldevice;
 import metal;
+import foundation;
 import objc;
 
 import core.attribute : selector, optional;

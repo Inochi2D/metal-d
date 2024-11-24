@@ -9,11 +9,18 @@
     MTLDevice
 */
 module metal.mtldevice;
-import foundation;
+import metal.mtlcommandqueue;
+import metal.mtlresource;
+import metal.mtlbuffer;
+import metal.mtltexture;
+import metal.mtllibrary;
 import metal;
+import foundation;
 import objc;
 
 import core.attribute : selector, optional;
+
+version (Have_iosurface_d) import iosurface;
 
 /**
     Represents the functionality for families of GPUs.
@@ -631,7 +638,7 @@ public:
     /**
         Creates a texture instance that uses an IOSurface to store its underlying data.
     */
-    version(IOSurface)
+    version(Have_iosurface_d)
     MTLTexture newTexture(MTLTextureDescriptor descriptor, IOSurfaceRef surface, NSUInteger plane) @selector("newTextureWithDescriptor:iosurface:plane:");
 
     /**

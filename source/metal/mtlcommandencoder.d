@@ -9,6 +9,7 @@
     MTLCommandBuffer
 */
 module metal.mtlcommandencoder;
+import metal.mtldevice;
 import foundation;
 import metal;
 import objc;

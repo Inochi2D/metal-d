@@ -9,8 +9,11 @@
     MTLRenderPass
 */
 module metal.mtlrenderpass;
-import foundation;
+import metal.mtldevice;
+import metal.mtltexture;
+import metal.mtlbuffer;
 import metal;
+import foundation;
 import objc;
 
 import core.attribute : selector, optional;

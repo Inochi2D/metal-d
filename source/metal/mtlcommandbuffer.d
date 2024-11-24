@@ -9,8 +9,17 @@
     MTLCommandBuffer
 */
 module metal.mtlcommandbuffer;
-import foundation;
+import metal.mtldevice;
+import metal.mtlcommandqueue;
+import metal.mtlrendercommandencoder;
+import metal.mtlcomputecommandencoder;
+import metal.mtlblitcommandencoder;
+import metal.mtlparallelrendercommandencoder;
+import metal.mtlrenderpass;
+import metal.mtldrawable;
 import metal;
+import corefoundation;
+import foundation;
 import objc;
 
 import core.attribute : selector;

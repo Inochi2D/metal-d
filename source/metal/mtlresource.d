@@ -9,13 +9,12 @@
     MTLTexture
 */
 module metal.mtlresource;
-import foundation;
+import metal.mtldevice;
 import metal;
+import foundation;
 import objc;
 
 import core.attribute : selector, optional;
-
-import iosurface;
 
 /**
     Options for setPurgeable call.

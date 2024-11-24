@@ -9,8 +9,10 @@
     MTLLibrary
 */
 module metal.mtllibrary;
-import foundation;
+import metal.mtldevice;
+import metal.mtlargument;
 import metal;
+import foundation;
 import objc;
 
 import core.attribute : selector, optional;

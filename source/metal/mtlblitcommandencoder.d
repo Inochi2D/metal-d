@@ -9,8 +9,13 @@
     MTLBlitCommandEncoder
 */
 module metal.mtlblitcommandencoder;
-import foundation;
+import metal.mtlcommandencoder;
+import metal.mtlresource;
+import metal.mtltexture;
+import metal.mtlbuffer;
+import metal.mtlfence;
 import metal;
+import foundation;
 import objc;
 
 import core.attribute : selector, optional;

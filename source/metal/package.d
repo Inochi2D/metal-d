@@ -12,9 +12,5 @@ module metal;
 import foundation;
 import objc;
 
-static if (IsAppleOS):
-
-mixin LinkFramework!("Metal");
-
 // Base types
 public import metal.mtltypes;

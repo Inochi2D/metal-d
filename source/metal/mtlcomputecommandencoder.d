@@ -9,8 +9,9 @@
     MTLComputeCommandEncoder
 */
 module metal.mtlcomputecommandencoder;
-import foundation;
+import metal.mtlcommandencoder;
 import metal;
+import foundation;
 import objc;
 
 import core.attribute : selector, optional;

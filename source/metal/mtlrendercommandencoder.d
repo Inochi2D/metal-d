@@ -9,8 +9,16 @@
     MTLCommandBuffer
 */
 module metal.mtlrendercommandencoder;
-import foundation;
+import metal.mtldevice;
+import metal.mtlcommandencoder;
+import metal.mtlrenderpipeline;
+import metal.mtlrenderpass;
+import metal.mtlsamplerstate;
+import metal.mtlbuffer;
+import metal.mtltexture;
+import metal.mtlfence;
 import metal;
+import foundation;
 import objc;
 
 import core.attribute : selector, optional;

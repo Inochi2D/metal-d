@@ -9,8 +9,10 @@
     MTLCommandQueue
 */
 module metal.mtlcommandqueue;
-import foundation;
+import metal.mtldevice;
+import metal.mtlcommandbuffer;
 import metal;
+import foundation;
 import objc;
 
 import core.attribute : selector;

@@ -4,7 +4,9 @@ authors "Luna"
 copyright "Copyright © 2024, Inochi2D Project"
 license "BSD-2-Clause"
 
-dependency "objective-d" version="~>1.0.3"
+dependency "objective-d" version="~>1.0"
+dependency "corefoundation-d" version="~>1.0"
+dependency "coregraphics-d" version=">=0.5.0"
 
 # Only LDC and DMD is supported currently.
 toolchainRequirements gdc="no"

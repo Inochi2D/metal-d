@@ -10,8 +10,6 @@
 */
 module metalkit;
 
-static if (IsAppleOS):
 version(MetalKit):
-
 mixin LinkFramework!("MetalKit");
 

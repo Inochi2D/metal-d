@@ -9,8 +9,9 @@
     MTLDrawable
 */
 module metal.mtldrawable;
-import foundation;
 import metal;
+import foundation;
+import coregraphics;
 import objc;
 
 import core.attribute : selector, optional;
