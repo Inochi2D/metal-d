@@ -9,9 +9,12 @@
     MTLDrawable
 */
 module metal.mtldrawable;
-import metal;
-import foundation;
+import metal.mtldevice;
+import metal.mtltexture;
+import coregraphics.cggeometry;
 import coregraphics;
+import foundation;
+import metal;
 import objc;
 
 import core.attribute : selector, optional;
@@ -100,10 +103,6 @@ public:
     void addPresentedHandler(MTLDrawablePresentedHandler block) @selector("addPresentedHandler:");
 }
 
-version(CoreAnimation):
-
-import coreanimation;
-
 /**
     A Metal drawable associated with a Core Animation layer.
 */
@@ -127,7 +126,7 @@ public:
     A Core Animation layer that Metal can render into, typically displayed onscreen.
 */
 extern(Objective-C)
-extern class CAMetalLayer : CALayer {
+extern class CAMetalLayer : NSObject {
 nothrow @nogc:
 public:
 
