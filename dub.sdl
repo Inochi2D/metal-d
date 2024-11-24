@@ -4,7 +4,7 @@ authors "Luna"
 copyright "Copyright © 2024, Inochi2D Project"
 license "BSD-2-Clause"
 
-dependency "objective-d" version="~>1.0.2"
+dependency "objective-d" version="~>1.0.3"
 
 # Only LDC and DMD is supported currently.
 toolchainRequirements gdc="no"
