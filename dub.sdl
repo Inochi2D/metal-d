@@ -1,0 +1,23 @@
+name "metal-d"
+description "D bindings for the Metal API"
+authors "Luna"
+copyright "Copyright © 2024, Inochi2D Project"
+license "BSD-2-Clause"
+
+dependency "objective-d" version="~>1.0.2"
+
+# Only LDC and DMD is supported currently.
+toolchainRequirements gdc="no"
+targetPath "out/"
+
+# Default configuration.
+configuration "static" {
+    platforms "osx" "ios" "tvos" "watchos" "visionos"
+    targetType "library"
+    lflags "-framework" "Metal"
+}
+
+# For platforms that don't support it.
+configuration "other_platforms" {
+    targetType "none"
+}
