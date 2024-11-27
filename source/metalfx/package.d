@@ -6,11 +6,11 @@
 */
 
 /**
-    Bindings to Apple's MetalKit API.
+    Bindings to Apple's MetalFX API.
 */
-module metalkit;
+module metalfx;
 import objc.os;
 
-version(MetalKit):
-mixin LinkFramework!("MetalKit");
+version(MetalFX):
+mixin LinkFramework!("MetalFX");
 
