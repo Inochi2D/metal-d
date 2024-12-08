@@ -8,9 +8,7 @@
 /**
     MTLDrawable
 */
-module metal.mtldrawable;
-import metal.mtldevice;
-import metal.mtltexture;
+module metal.drawable;
 import coregraphics.cggeometry;
 import coregraphics;
 import metal;

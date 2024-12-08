@@ -8,10 +8,10 @@
 /**
     MTLTexture
 */
-module metal.mtltexture;
-import metal.mtlresource;
-import metal.mtlbuffer;
-import metal.mtldevice;
+module metal.texture;
+import metal.resource;
+import metal.buffer;
+import metal.device;
 import metal;
 import iosurface;
 import foundation;

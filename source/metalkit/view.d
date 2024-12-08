@@ -8,7 +8,7 @@
 /**
     MTKView
 */
-module metalkit.mtkview;
+module metalkit.view;
 import coregraphics.cggeometry;
 import foundation;
 import metalkit;

@@ -8,8 +8,8 @@
 /**
     MTKMesh, MTKSubmesh, MTKMeshBuffer, MTKMeshBufferAllocator
 */
-module metalkit.mtkmodel;
-import metal.mtldevice;
+module metalkit.model;
+import metal.device;
 import foundation;
 import metalkit;
 import metal;

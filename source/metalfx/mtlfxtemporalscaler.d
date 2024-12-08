@@ -11,10 +11,10 @@
 module metalfx.mtlfxtemporalscaler;
 import coregraphics.cggeometry;
 import foundation;
-import metal.mtldevice;
-import metal.mtltexture;
-import metal.mtlcommandbuffer;
-import metal.mtlfence;
+import metal.device;
+import metal.texture;
+import metal.commandbuffer;
+import metal.sync;
 import metal;
 import metalfx;
 import objc;

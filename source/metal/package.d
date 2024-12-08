@@ -12,5 +12,15 @@ module metal;
 import foundation;
 import objc;
 
-// Base types
-public import metal.mtltypes;
+public import metal.types;
+public import metal.device;
+public import metal.resource;
+public import metal.texture;
+public import metal.buffer;
+public import metal.sync;
+public import metal.stateobjects;
+public import metal.commandqueue;
+public import metal.commandbuffer;
+public import metal.gpupass;
+public import metal.commandencoder;
+public import metal.drawable;

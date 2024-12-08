@@ -9,8 +9,8 @@
     Bindings to Apple's IOSurface API.
 */
 module iosurface;
-import corefoundation.cfstring;
-import corefoundation.cfdictionary;
+import corefoundation.string;
+import corefoundation.dictionary;
 import corefoundation;
 import mach.ports;
 import core.sys.darwin.mach.kern_return;

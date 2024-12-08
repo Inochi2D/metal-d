@@ -8,9 +8,9 @@
 /**
     MTKTextureLoader
 */
-module metalkit.mtktextureloader;
-import metal.mtldevice;
-import metal.mtltexture;
+module metalkit.textureloader;
+import metal.device;
+import metal.texture;
 import foundation;
 import metalkit;
 import metal;

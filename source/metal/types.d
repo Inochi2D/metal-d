@@ -8,7 +8,7 @@
 /**
     Core Metal Types
 */
-module metal.mtltypes;
+module metal.types;
 import foundation;
 import metal;
 import objc;

@@ -8,9 +8,9 @@
 /**
     MTLCommandQueue
 */
-module metal.mtlcommandqueue;
-import metal.mtldevice;
-import metal.mtlcommandbuffer;
+module metal.commandqueue;
+import metal.device;
+import metal.commandbuffer;
 import metal;
 import foundation;
 import objc;

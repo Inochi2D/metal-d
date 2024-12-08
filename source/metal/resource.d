@@ -8,8 +8,8 @@
 /**
     MTLTexture
 */
-module metal.mtlresource;
-import metal.mtldevice;
+module metal.resource;
+import metal.device;
 import metal;
 import foundation;
 import objc;

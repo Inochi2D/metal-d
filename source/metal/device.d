@@ -8,12 +8,12 @@
 /**
     MTLDevice
 */
-module metal.mtldevice;
-import metal.mtlcommandqueue;
-import metal.mtlresource;
-import metal.mtlbuffer;
-import metal.mtltexture;
-import metal.mtllibrary;
+module metal.device;
+import metal.commandqueue;
+import metal.resource;
+import metal.buffer;
+import metal.texture;
+import metal.library;
 import metal;
 import iosurface;
 import foundation;
@@ -340,7 +340,7 @@ public:
     /**
         The name of a GPU device’s architecture.
     */
-    @property NSString name() const;
+    @property NSString name() const @selector("AAAAAAAAAA");
 
     /**
         Returns a new instance that’s a copy of the receiver.
@@ -359,45 +359,45 @@ public:
     /**
         The maximum threadgroup memory available to a compute kernel, in bytes.
     */
-    @property NSUInteger maxThreadgroupMemoryLength() const;
+    @property NSUInteger maxThreadgroupMemoryLength() const @selector("maxThreadgroupMemoryLength");
 
     /**
         The maximum number of threads along each dimension of a threadgroup.
     */
-    @property MTLSize maxThreadsPerThreadgroup() const;
+    @property MTLSize maxThreadsPerThreadgroup() const @selector("maxThreadsPerThreadgroup");
 
     /**
         A Boolean value that indicates whether the GPU device supports ray tracing.
     */
-    @property bool supportsRaytracing() const;
+    @property bool supportsRaytracing() const @selector("supportsRaytracing");
 
     /**
         The maximum threadgroup memory available to a compute kernel, in bytes.
     */
-    @property bool supportsPrimitiveMotionBlur() const;
+    @property bool supportsPrimitiveMotionBlur() const @selector("supportsPrimitiveMotionBlur");
 
     /**
         A Boolean value that indicates whether you can call ray-tracing functions 
         from a vertex or fragment shader.
     */
-    @property bool supportsRaytracingFromRender() const;
+    @property bool supportsRaytracingFromRender() const @selector("supportsRaytracingFromRender");
 
     /**
         A Boolean value that indicates whether the GPU can allocate 32-bit integer 
         texture formats and resolve to 32-bit floating-point texture formats.
     */
-    @property bool supports32BitMSAA() const;
+    @property bool supports32BitMSAA() const @selector("supports32BitMSAA");
 
     /**
         A Boolean value that indicates whether the GPU can compute multiple 
         interpolations of a fragment function’s input.
     */
-    @property bool supportsPullModelInterpolation() const;
+    @property bool supportsPullModelInterpolation() const @selector("supportsPullModelInterpolation");
 
     /**
         A Boolean value that indicates whether the GPU supports barycentric coordinates.
     */
-    @property bool supportsShaderBarycentricCoordinates() const;
+    @property bool supportsShaderBarycentricCoordinates() const @selector("supportsShaderBarycentricCoordinates");
 
     /**
         A Boolean value that indicates whether the GPU supports programmable sample positions.
@@ -413,12 +413,12 @@ public:
         A Boolean value that indicates whether the GPU can filter a texture with a 
         32-bit floating-point format.
     */
-    @property bool supports32BitFloatFiltering() const;
+    @property bool supports32BitFloatFiltering() const @selector("supports32BitFloatFiltering");
 
     /**
         A Boolean value that indicates whether you can use textures that use BC compression.
     */
-    @property bool supportsBCTextureCompression() const;
+    @property bool supportsBCTextureCompression() const @selector("supportsBCTextureCompression");
 
     /**
         A Boolean value that indicates whether the GPU can filter a texture with a 
@@ -430,73 +430,73 @@ public:
         A Boolean value that indicates whether you can query the texture level of 
         detail from within a shader.
     */
-    @property bool supportsQueryTextureLOD() const;
+    @property bool supportsQueryTextureLOD() const @selector("supportsQueryTextureLOD");
 
     /**
         The GPU device’s texture support tier.
     */
-    @property MTLReadWriteTextureTier readWriteTextureSupport() const;
+    @property MTLReadWriteTextureTier readWriteTextureSupport() const @selector("readWriteTextureSupport");
 
     /**
         A Boolean value that indicates whether the GPU device supports 
         pointers to compute kernel functions.
     */
-    @property bool supportsFunctionPointers() const;
+    @property bool supportsFunctionPointers() const @selector("supportsFunctionPointers");
 
     /**
         A Boolean value that indicates whether the GPU device 
         supports pointers to render functions.
     */
-    @property bool supportsFunctionPointersFromRender() const;
+    @property bool supportsFunctionPointersFromRender() const @selector("supportsFunctionPointersFromRender");
 
     /**
         The total amount of memory, in bytes, the GPU device is using for 
         all of its resources.
     */
-    @property NSUInteger currentAllocatedSize() const;
+    @property NSUInteger currentAllocatedSize() const @selector("currentAllocatedSize");
 
     /**
         An approximation of how much memory, in bytes, this GPU device 
         can allocate without affecting its runtime performance.
     */
-    @property ulong recommendedMaxWorkingSetSize() const;
+    @property ulong recommendedMaxWorkingSetSize() const @selector("recommendedMaxWorkingSetSize");
 
     /**
         A Boolean value that indicates whether the GPU shares all of 
         its memory with the CPU.
     */
-    @property bool hasUnifiedMemory() const;
+    @property bool hasUnifiedMemory() const @selector("hasUnifiedMemory");
 
     /**
         The highest theoretical rate, in bytes per second, the system can copy between 
         system memory and the GPU’s dedicated memory (VRAM).
     */
-    @property ulong maxTransferRate() const;
+    @property ulong maxTransferRate() const @selector("maxTransferRate");
 
     /**
         The full name of the GPU device.
     */
-    @property NSString name() const;
+    @property NSString name() const @selector("name");
 
     /**
         The architectural details of the GPU device.
     */
-    @property MTLArchitecture architecture() const;
+    @property MTLArchitecture architecture() const @selector("architecture");
 
     /**
         The GPU device’s registry identifier.
     */
-    @property ulong registryID() const;
+    @property ulong registryID() const @selector("registryID");
 
     /**
         The physical location of the GPU relative to the system.
     */
-    @property MTLDeviceLocation location() const;
+    @property MTLDeviceLocation location() const @selector("location");
 
     /**
         A specific GPU position based on its general location.
     */
-    @property NSUInteger locationNumber() const;
+    @property NSUInteger locationNumber() const @selector("locationNumber");
 
     /**
         A Boolean value that indicates whether the GPU lowers its 
@@ -522,7 +522,7 @@ public:
         Otherwise, the GPU is in a peer group and the value is the group’s ID. 
         All other GPUs in the same peer group have the same group ID.
     */
-    @property ulong peerGroupID() const;
+    @property ulong peerGroupID() const @selector("peerGroupID");
 
     /**
         The total number of GPUs in the peer group, if applicable.
@@ -531,7 +531,7 @@ public:
         Otherwise, the GPU is in a peer group and the value represents the 
         total number of GPUs in the group, including this one.
     */
-    @property uint peerCount() const;
+    @property uint peerCount() const @selector("peerCount");
 
     /**
         The unique identifier for a GPU in a peer group.
@@ -540,18 +540,18 @@ public:
         peer index is the GPU’s unique value within the group in the 
         range [0, peerCount).
     */
-    @property uint peerIndex() const;
+    @property uint peerIndex() const @selector("peerIndex");
 
     /**
         How many concurrent compilation tasks the device supports.
     */
-    @property NSUInteger maximumConcurrentCompilationTaskCount() const;
+    @property NSUInteger maximumConcurrentCompilationTaskCount() const @selector("maximumConcurrentCompilationTaskCount");
 
     /**
         Whether it's recommended that the developer maximizes concurrent
         compilation tasks.
     */
-    @property bool shouldMaximizeConcurrentCompilation() const;
+    @property bool shouldMaximizeConcurrentCompilation() const @selector("shouldMaximizeConcurrentCompilation");
 
     /**
         Returns a Boolean value that indicates whether the GPU device supports the 
@@ -567,29 +567,29 @@ public:
     /**
         The largest amount of memory, in bytes, that a GPU device can allocate to a buffer instance.
     */
-    @property NSUInteger maxBufferLength() const;
+    @property NSUInteger maxBufferLength() const @selector("maxBufferLength");
 
     /**
         Returns the size, in bytes, of a sparse tile the GPU device creates using a default page size.
     */
-    @property NSUInteger sparseTileSizeInBytes() const;
+    @property NSUInteger sparseTileSizeInBytes() const @selector("sparseTileSizeInBytes");
 
     /**
         The maximum number of unique argument buffer samplers per app.
     */
-    @property NSUInteger maxArgumentBufferSamplerCount() const;
+    @property NSUInteger maxArgumentBufferSamplerCount() const @selector("maxArgumentBufferSamplerCount");
 
     /**
         A Boolean value that indicates whether the GPU device can create and use 
         dynamic libraries in compute pipelines.
     */
-    @property bool supportsDynamicLibraries() const;
+    @property bool supportsDynamicLibraries() const @selector("supportsDynamicLibraries");
 
     /**
         A Boolean value that indicates whether the GPU device can create and use 
         dynamic libraries in render pipelines.
     */
-    @property bool supportsRenderDynamicLibraries() const;
+    @property bool supportsRenderDynamicLibraries() const @selector("supportsRenderDynamicLibraries");
 
     /**
         Creates the system default device.

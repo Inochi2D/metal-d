@@ -6,17 +6,24 @@
 */
 
 /**
-    MTLRenderPass
+    Bindings to objects related to the state of various GPU passes.
 */
-module metal.mtlrenderpass;
-import metal.mtldevice;
-import metal.mtltexture;
-import metal.mtlbuffer;
+module metal.gpupass;
+import metal.device;
+import metal.texture;
+import metal.buffer;
 import metal;
 import foundation;
 import objc;
 
 import core.attribute : selector, optional;
+
+
+
+
+//
+//          RENDER STATE
+//
 
 /**
     An RGBA value used for a color pixel.
@@ -408,7 +415,6 @@ public:
     @property void stencilResolveFilter(MTLMultisampleStencilResolveFilter) @selector("setStencilResolveFilter:");
 }
 
-
 /**
     A group of render targets that hold the results of a render pass.
 */
@@ -522,4 +528,474 @@ public:
         sufficient for the number of previously configured positions.
     */
     NSUInteger getSamplePositions(MTLSamplePosition* position, NSUInteger count) @selector("getSamplePositions:count:");
+}
+
+/**
+    Indicates whether shader validation in an enabled or disabled state, 
+    or neither state.
+*/
+enum MTLShaderValidation : NSInteger {
+    Default,
+    Disabled,
+    Enabled
+}
+
+/**
+
+*/
+enum MTLBlendFactor : NSUInteger {
+    Zero = 0,
+    One = 1,
+    SourceColor = 2,
+    OneMinusSourceColor = 3,
+    SourceAlpha = 4,
+    OneMinusSourceAlpha = 5,
+    DestinationColor = 6,
+    OneMinusDestinationColor = 7,
+    DestinationAlpha = 8,
+    OneMinusDestinationAlpha = 9,
+    SourceAlphaSaturated = 10,
+    BlendColor = 11,
+    OneMinusBlendColor = 12,
+    BlendAlpha = 13,
+    OneMinusBlendAlpha = 14,
+    Source1Color = 15,
+    OneMinusSource1Color = 16,
+    Source1Alpha = 17,
+    OneMinusSource1Alpha = 18,
+}
+
+/**
+
+*/
+enum MTLBlendOperation : NSUInteger {
+    Add = 0,
+    Subtract = 1,
+    ReverseSubtract = 2,
+    Min = 3,
+    Max = 4,
+}
+
+/**
+
+*/
+enum MTLColorWriteMask : NSUInteger {
+    None  = 0,
+    Red   = 0x1 << 3,
+    Green = 0x1 << 2,
+    Blue  = 0x1 << 1,
+    Alpha = 0x1 << 0,
+    All   = 0xf
+}
+
+/**
+
+*/
+enum MTLPrimitiveTopologyClass : NSUInteger {
+    Unspecified = 0,
+    Point = 1,
+    Line = 2,
+    Triangle = 3,
+}
+
+/**
+
+*/
+enum MTLTessellationPartitionMode : NSUInteger {
+    Pow2 = 0,
+    Integer = 1,
+    FractionalOdd = 2,
+    FractionalEven = 3,
+}
+
+/**
+
+*/
+enum MTLTessellationFactorStepFunction : NSUInteger {
+    Constant = 0,
+    PerPatch = 1,
+    PerInstance = 2,
+    PerPatchAndPerInstance = 3,
+}
+
+/**
+
+*/
+enum MTLTessellationFactorFormat : NSUInteger {
+    Half = 0,
+}
+
+/**
+
+*/
+enum MTLTessellationControlPointIndexType : NSUInteger {
+    None = 0,
+    UInt16 = 1,
+    UInt32 = 2,
+}
+
+/**
+    Options for filtering texels within a mip level.   
+*/
+enum MTLSamplerMinMagFilter : NSUInteger
+{
+
+    /**
+        Select the single texel nearest to the sample point.
+    */
+    Nearest = 0,
+
+    /**
+        Select two texels in each dimension, and interpolate linearly between them.
+        Not all devices support linear filtering for all formats.
+        Integer textures can not use linear filtering on any device, 
+        and only some devices support linear filtering of float textures.
+    */
+    Linear = 1,
+}
+
+/**
+    Options for selecting and filtering between mipmap levels
+*/
+enum MTLSamplerMipFilter : NSUInteger
+{
+
+    /**
+        The texture is sampled as if it only had a single mipmap level.  All samples are read from level 0.
+    */
+    NotMipmapped = 0,
+
+    /**
+        The nearst mipmap level is selected.
+    */
+    Nearest = 1,
+
+    /**
+        If the filter falls between levels, both levels are sampled, 
+        and their results linearly interpolated between levels.
+    */
+    Linear = 2,
+}
+
+/**
+    Options for what value is returned when a fetch falls outside the bounds of a texture.
+*/
+enum MTLSamplerAddressMode : NSUInteger
+{
+
+    /**
+        Texture coordinates will be clamped between 0 and 1.
+    */
+    ClampToEdge = 0,
+
+    /**
+        Mirror the texture while coordinates are within -1..1, and clamp to edge when outside.
+    */
+    MirrorClampToEdge = 1,
+
+    /**
+        Wrap to the other side of the texture, effectively ignoring fractional parts of the 
+        texture coordinate.
+    */
+    Repeat = 2,
+
+    /**
+        Between -1 and 1 the texture is mirrored across the 0 axis.
+        
+        The image is repeated outside of that range.
+    */
+    MirrorRepeat = 3,
+
+    /**
+        ClampToZero returns transparent zero (0,0,0,0) for images with an alpha channel, 
+        and returns opaque zero (0,0,0,1) for images without an alpha channel.
+    */
+    ClampToZero = 4,
+
+    /**
+        ClampToBorderColor returns the value specified by the borderColor variable of 
+        the MTLSamplerDesc.
+    */
+    ClampToBorderColor = 5,
+}
+
+/**
+    Specify the color value that will be clamped to when the sampler address mode is 
+    ClampToBorderColor.
+*/
+enum MTLSamplerBorderColor : NSUInteger
+{
+
+    /**
+        TransparentBlack returns {0,0,0,0} for clamped texture values.
+    */
+    TransparentBlack = 0,
+
+    /**
+        OpaqueBlack returns {0,0,0,1} for clamped texture values.
+    */
+    OpaqueBlack = 1,
+
+    /**
+        OpaqueWhite returns {1,1,1,1} for clamped texture values.
+    */
+    OpaqueWhite = 2,
+}
+
+
+/**
+    An interface that represents a graphics pipeline configuration for a render pass, 
+    which the pass applies to the draw commands you encode.
+*/
+extern(Objective-C)
+extern interface MTLRenderPipelineState : NSObjectProtocol {
+@nogc nothrow:
+public:
+
+    /**
+        The GPU device that created the command queue.
+    */
+    @property MTLDevice device() const;
+
+    /**
+        An optional name that can help you identify the command queue.
+    */
+    @property NSString label();
+    @property void label(NSString);
+
+    /**
+        An unique identifier that represents the pipeline state, 
+        which you can add to an argument buffer.
+    */
+    @property MTLResourceID gpuResourceID() const;
+
+    /**
+        The largest number of threads the pipeline state can have 
+        in a single object shader threadgroup.
+    */
+    @property NSUInteger maxTotalThreadsPerObjectThreadgroup() const;
+
+    /**
+        The number of threads the render pass applies to a SIMD group 
+        for an object shader.
+    */
+    @property NSUInteger objectThreadExecutionWidth() const;
+
+    /**
+        The largest number of threads the pipeline state can have 
+        in a single mesh shader threadgroup.
+    */
+    @property NSUInteger maxTotalThreadsPerMeshThreadgroup() const;
+
+    /**
+        The largest number of threadgroups the pipeline state can 
+        have in a single mesh shader grid.
+    */
+    @property NSUInteger maxTotalThreadgroupsPerMeshGrid() const;
+
+    /**
+        The number of threads the render pass applies to a SIMD group 
+        for a mesh shader.
+    */
+    @property NSUInteger meshThreadExecutionWidth() const;
+
+    /**
+        The largest number of threads the pipeline state can have 
+        in a single tile shader threadgroup.
+    */
+    @property NSUInteger maxTotalThreadsPerThreadgroup() const;
+
+    /**
+        A Boolean value that indicates whether the pipeline state 
+        needs a threadgroup’s size to equal a tile’s size.
+    */
+    @property NSUInteger threadgroupSizeMatchesTileSize() const;
+
+    /**
+        The memory size, in byes, of the render pipeline’s imageblock 
+        for a single sample.
+    */
+    @property NSUInteger imageblockSampleLength() const;
+
+    /**
+        A Boolean value that indicates whether the render pipeline 
+        supports encoding commands into an indirect command buffer.
+    */
+    @property bool supportIndirectCommandBuffers() const;
+
+    /**
+        The current state of shader validation for the pipeline.
+    */
+    @property MTLShaderValidation shaderValidation() const;
+    
+    /**
+        Returns the length of an imageblock’s memory for the specified
+        imageblock dimensions.
+    */
+    @property NSUInteger imageblockMemoryLengthForDimensions(MTLSize imageblockDimensions) @selector("imageblockMemoryLengthForDimensions:");
+}
+
+
+
+
+
+//
+//          BLIT STATE
+//
+
+
+/**
+    The options that enable behavior for some blit operations.
+*/
+enum MTLBlitOptions : NSUInteger {
+    
+    /**
+        A blit option that clears other blit options, which removes any optional 
+        behavior for a blit operation.
+    */
+    None                       = 0,
+    
+    /**
+        A blit option that copies the depth portion of a combined depth and stencil 
+        texture to or from a buffer.
+    */
+    DepthFromDepthStencil      = 1 << 0,
+    
+    /**
+        A blit option that copies the stencil portion of a combined depth and stencil 
+        texture to or from a buffer.
+    */
+    StencilFromDepthStencil    = 1 << 1,
+    
+    /**
+        A blit option that copies PVRTC data between a texture and a buffer.
+    */
+    RowLinearPVRTC = 1 << 2,
+}
+
+/**
+    A configuration that instructs the GPU where to store counter data 
+    from the beginning and end of a blit pass.
+*/
+extern(Objective-C)
+extern class MTLBlitPassSampleBufferAttachmentDescriptor : NSObject, NSCopying {
+@nogc nothrow:
+public:
+
+    /**
+        Returns a new instance of the receiving class.
+    */
+    override static MTLBlitPassSampleBufferAttachmentDescriptor alloc() @selector("alloc");
+
+    /**
+        Implemented by subclasses to initialize a new object (the receiver) 
+        immediately after memory for it has been allocated.
+    */
+    override MTLBlitPassSampleBufferAttachmentDescriptor init() @selector("init");
+
+    /**
+        An index within a counter sample buffer that tells the GPU where to 
+        store counter data from the start of a blit pass.
+    */
+    @property NSUInteger startOfEncoderSampleIndex();
+    @property void startOfEncoderSampleIndex(NSUInteger);
+
+    /**
+        An index within a counter sample buffer that tells the GPU where to 
+        store counter data from the end of a blit pass.
+    */
+    @property NSUInteger endOfEncoderSampleIndex();
+    @property void endOfEncoderSampleIndex(NSUInteger);
+
+    /**
+        Returns a new instance that’s a copy of the receiver.
+    */
+    id copyWithZone(NSZone* zone) @selector("copyWithZone:");
+}
+
+/**
+    A container that stores an array of sample buffer attachments for a blit pass.
+*/
+extern(Objective-C)
+extern class MTLBlitPassSampleBufferAttachmentDescriptorArray : NSObject {
+@nogc nothrow:
+public:
+
+    /**
+        Returns a new instance of the receiving class.
+    */
+    override static MTLBlitPassSampleBufferAttachmentDescriptorArray alloc() @selector("alloc");
+
+    /**
+        Implemented by subclasses to initialize a new object (the receiver) 
+        immediately after memory for it has been allocated.
+    */
+    override MTLBlitPassSampleBufferAttachmentDescriptorArray init() @selector("init");
+
+    /**
+        Gets the MTLBlitPassSampleBufferAttachmentDescriptor at the specified index.
+    */
+    MTLBlitPassSampleBufferAttachmentDescriptor get(NSUInteger attachmentIndex) @selector("objectAtIndexedSubscript:");
+
+    /*
+        Sets the MTLBlitPassSampleBufferAttachmentDescriptor at the specified index.
+
+        ### Note
+        > This always uses 'copy' semantics.
+        > It is safe to set the attachment state at any legal index to nil, 
+        > which resets that attachment descriptor state to default values.
+    */
+    void set(MTLBlitPassSampleBufferAttachmentDescriptor attachment, NSUInteger attachmentIndex) @selector("setObject:atIndexedSubscript:");
+
+    /**
+        Gets the MTLBlitPassSampleBufferAttachmentDescriptor at the specified index.
+    */
+    extern(D)
+    MTLBlitPassSampleBufferAttachmentDescriptor opIndex(size_t index) {
+        return this.get(cast(NSUInteger)index);
+    }
+
+    /**
+        Sets the MTLBlitPassSampleBufferAttachmentDescriptor at the specified index.
+    */
+    extern(D)
+    void opIndexAssign(MTLBlitPassSampleBufferAttachmentDescriptor desc, size_t index) {
+        this.set(desc, cast(NSUInteger)index);
+    }
+
+    /**
+        Returns a new instance that’s a copy of the receiver.
+    */
+    id copyWithZone(NSZone* zone) @selector("copyWithZone:");
+}
+
+/**
+    A configuration you create to customize a blit command encoder, which affects the 
+    runtime behavior of the blit pass you encode with it.
+*/
+extern(Objective-C)
+extern class MTLBlitPassDescriptor : NSObject, NSCopying {
+@nogc nothrow:
+public:
+
+    /**
+        Returns a new instance of the receiving class.
+    */
+    override static MTLBlitPassDescriptor alloc() @selector("alloc");
+
+    /**
+        Implemented by subclasses to initialize a new object (the receiver) 
+        immediately after memory for it has been allocated.
+    */
+    override MTLBlitPassDescriptor init() @selector("init");
+
+    /**
+        An array of counter sample buffer attachments that you configure for a blit pass.
+    */
+    @property MTLBlitPassSampleBufferAttachmentDescriptor sampleBufferAttachments() const;
+
+    /**
+        Returns a new instance that’s a copy of the receiver.
+    */
+    id copyWithZone(NSZone* zone) @selector("copyWithZone:");
 }
