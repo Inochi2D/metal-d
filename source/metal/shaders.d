@@ -8,7 +8,7 @@
 /**
     MTLLibrary
 */
-module metal.library;
+module metal.shaders;
 import metal.device;
 import metal;
 import foundation;
@@ -279,20 +279,20 @@ public:
     An object that represents a public shader function in a Metal library.
 */
 extern(Objective-C)
-extern class MTLFunction : NSObject {
+extern interface MTLFunction : NSObjectProtocol {
 nothrow @nogc:
 public:
 
     /**
         Returns a new instance of the receiving class.
     */
-    override static MTLFunction alloc() @selector("alloc");
+    static MTLFunction alloc() @selector("alloc");
 
     /**
         Implemented by subclasses to initialize a new object (the receiver) 
         immediately after memory for it has been allocated.
     */
-    override MTLFunction init() @selector("init");
+    MTLFunction init() @selector("init");
     
     /**
         A string that identifies the shader function.
@@ -482,6 +482,11 @@ public:
         The names of all public functions in the library.
     */
     @property NSArray!NSString functionNames() const;
+
+    /**
+        Creates an object that represents a shader function in the library.
+    */
+    MTLFunction newFunction(NSString name) @selector("newFunctionWithName:");
 }
 
 /**
@@ -508,6 +513,13 @@ public:
     */
     @property NSString installName() const;
 }
+
+
+
+
+
+
+
 
 //
 //          INTROSPECTION

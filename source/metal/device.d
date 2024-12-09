@@ -13,7 +13,7 @@ import metal.commandqueue;
 import metal.resource;
 import metal.buffer;
 import metal.texture;
-import metal.library;
+import metal.shaders;
 import metal;
 import iosurface;
 import foundation;
@@ -21,6 +21,7 @@ import objc;
 
 
 import core.attribute : selector, optional;
+import metal.gpupass;
 
 /**
     Represents the functionality for families of GPUs.
@@ -672,6 +673,11 @@ public:
         the functions in a source string.
     */
     MTLLibrary newLibrary(NSString source, MTLCompileOptions options, ref NSError error) @selector("newLibraryWithSource:options:error:");
+
+    /**
+
+    */
+    MTLRenderPipelineState newRenderPipelineState(MTLRenderPipelineDescriptor descriptor, ref NSError error) @selector("newRenderPipelineStateWithDescriptor:error:");
 }
 
 /**

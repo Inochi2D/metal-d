@@ -81,6 +81,11 @@ extern class MTLTextureDescriptor : NSObject, NSCopying {
 public:
 
     /**
+        Creates a texture descriptor object for a 2D texture.
+    */
+    static MTLTextureDescriptor create2D(MTLPixelFormat format, NSUInteger width, NSUInteger height, bool mipmapped) @selector("texture2DDescriptorWithPixelFormat:width:height:mipmapped:");
+
+    /**
         Returns a new instance of the receiving class.
     */
     override static MTLTextureDescriptor alloc() @selector("alloc");

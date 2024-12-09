@@ -18,6 +18,7 @@ public import metal.resource;
 public import metal.texture;
 public import metal.buffer;
 public import metal.sync;
+public import metal.shaders;
 public import metal.stateobjects;
 public import metal.commandqueue;
 public import metal.commandbuffer;
