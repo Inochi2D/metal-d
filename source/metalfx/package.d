@@ -9,7 +9,6 @@
     Bindings to Apple's MetalFX API.
 */
 module metalfx;
-import objc.os;
 
 version(MetalFX):
 mixin LinkFramework!("MetalFX");
