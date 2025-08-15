@@ -9,6 +9,7 @@
     MTLDrawable
 */
 module metal.drawable;
+import metal.pixelformat;
 import coregraphics.cggeometry;
 import coregraphics;
 import metal;

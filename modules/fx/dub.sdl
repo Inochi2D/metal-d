@@ -1,0 +1,15 @@
+name "fx"
+description "Bindings to MetalFX"
+
+# Default configuration.
+configuration "static" {
+    platforms "osx" "ios" "tvos" "watchos" "visionos"
+    targetType "library"
+    
+    lflags "-framework" "MetalFX"
+}
+
+# For platforms that don't support it.
+configuration "other_platforms" {
+    targetType "none"
+}

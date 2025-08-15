@@ -11,6 +11,9 @@ dependency "coregraphics-d" version=">=0.5.1"
 toolchainRequirements gdc="no"
 targetPath "out/"
 
+subPackage "modules/fx"
+subPackage "modules/kit"
+
 # Default configuration.
 configuration "static" {
     platforms "osx" "ios" "tvos" "watchos" "visionos"

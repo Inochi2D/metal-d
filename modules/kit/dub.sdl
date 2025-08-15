@@ -1,0 +1,15 @@
+name "kit"
+description "Bindings to MetalKit"
+
+# Default configuration.
+configuration "static" {
+    platforms "osx" "ios" "tvos" "watchos" "visionos"
+    targetType "library"
+    
+    lflags "-framework" "MetalKit"
+}
+
+# For platforms that don't support it.
+configuration "other_platforms" {
+    targetType "none"
+}

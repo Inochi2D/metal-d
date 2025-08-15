@@ -8,7 +8,7 @@
 /**
     Bindings to Apple's MetalFX API.
 */
-module metalfx.mtlfxspatialscaler;
+module metal.fx.mtlfxspatialscaler;
 import coregraphics.cggeometry;
 import foundation;
 import metal.device;
