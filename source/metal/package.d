@@ -1,12 +1,9 @@
-/*
-    Copyright © 2024, Inochi2D Project
-    Distributed under the 2-Clause BSD License, see LICENSE file.
-    
-    Authors: Luna Nielsen
-*/
-
 /**
-    Bindings to Apple's Metal API.
+    Bindings to the core Metal 1-3 APIs
+
+    Copyright: Copyright © 2024-2025, Kitsunebi Games EMV
+    License:   $(LINK2 http://www.boost.org/LICENSE_1_0.txt, Boost License 1.0)
+    Authors:   Luna Nielsen
 */
 module metal;
 import foundation;
