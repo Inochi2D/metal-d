@@ -11,7 +11,7 @@ import metal.commandqueue;
 import metal.resource;
 import metal.buffer;
 import metal.texture;
-import metal.shaders;
+import metal.library;
 import metal;
 import iosurface;
 import foundation;

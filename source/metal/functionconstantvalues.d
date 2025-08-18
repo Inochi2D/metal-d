@@ -6,6 +6,7 @@
     Authors:   Luna Nielsen
 */
 module metal.functionconstantvalues;
+import metal.datatype;
 import metal.argument;
 import foundation;
 import objc;
@@ -15,7 +16,10 @@ import core.attribute : selector, optional;
 /**
     A list of constant values that can be passed to shaders.
 */
+extern(Objective-C)
 class MTLFunctionConstantValues : NSObject, NSCopying {
+@nogc nothrow:
+public:
 
     // copyWithZone
     override id copyWithZone(NSZone* zone) @selector("copyWithZone:");
