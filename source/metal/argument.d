@@ -13,6 +13,8 @@ import metal.tensor;
 import foundation;
 import objc;
 
+import core.attribute : selector, optional;
+
 enum MTLIndexType : NSUInteger {
     UInt16 = 0,
     UInt32 = 1,

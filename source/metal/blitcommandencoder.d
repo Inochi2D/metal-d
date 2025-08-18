@@ -22,6 +22,16 @@ import objc;
 import core.attribute : selector, optional;
 
 /**
+    Controls the blit operation
+*/
+enum MTLBlitOption : NSUInteger {
+    None                       = 0,
+    DepthFromDepthStencil      = 1 << 0,
+    StencilFromDepthStencil    = 1 << 1,
+    RowLinearPVRTC = 1 << 2,
+}
+
+/**
     An interface that encodes a render pass into a command buffer, including all its draw 
     calls and configuration.
 */
