@@ -7,6 +7,7 @@
 */
 module metal.renderpipeline;
 import metal.pixelformat;
+import metal.vertexdescriptor;
 import metal.library;
 import metal.types;
 import metal.device;
@@ -319,9 +320,12 @@ public:
     An argument of options you pass to a GPU device to get a render pipeline state.
 */
 extern (Objective-C)
-extern class MTLRenderPipelineDescriptor : NSObject {
+extern class MTLRenderPipelineDescriptor : NSObject, NSCopying {
 @nogc nothrow:
 public:
+
+    // copyWithZone
+    override id copyWithZone(NSZone* zone) @selector("copyWithZone:") ;
 
     /**
         Returns a new instance of the receiving class.
@@ -337,20 +341,73 @@ public:
     /**
         The vertex function the pipeline calls to process vertices.
     */
-    @property MTLFunction vertexFunction() @selector("vertexFunction") ;
-    @property void vertexFunction(MTLFunction) @selector("setVertexFunction:") ;
+    @property MTLFunction vertexFunction();
+    @property void vertexFunction(MTLFunction);
 
     /**
         The fragment function the pipeline calls to process fragments.
     */
-    @property MTLFunction fragmentFunction() @selector("fragmentFunction") ;
-    @property void fragmentFunction(MTLFunction) @selector("setFragmentFunction:") ;
+    @property MTLFunction fragmentFunction();
+    @property void fragmentFunction(MTLFunction);
+
+    /**
+        
+    */
+    @property MTLVertexDescriptor vertexDescriptor();
+    @property void vertexDescriptor(MTLVertexDescriptor);
+
+    /**
+        
+    */
+    @property NSUInteger rasterSampleCount();
+    @property void rasterSampleCount(NSUInteger);
+
+    /**
+        
+    */
+    @property bool isAlphaToCoverageEnabled();
+    @property void isAlphaToCoverageEnabled(bool);
+
+    /**
+        
+    */
+    @property bool isAlphaToCoverageEnabled();
+    @property void isAlphaToCoverageEnabled(bool);
+
+    /**
+        
+    */
+    @property bool isAlphaToOneEnabled();
+    @property void isAlphaToOneEnabled(bool);
+
+    /**
+        
+    */
+    @property bool isRasterizationEnabled();
+    @property void isRasterizationEnabled(bool);
+
+    /**
+        
+    */
+    @property NSUInteger maxVertexAmplificationCount();
+    @property void maxVertexAmplificationCount(NSUInteger);
 
     /**
         Color attachments.
     */
-    @property MTLRenderPipelineColorAttachmentDescriptorArray colorAttachments() const @selector(
-        "colorAttachments") ;
+    @property MTLRenderPipelineColorAttachmentDescriptorArray colorAttachments() const;
+
+    /**
+        
+    */
+    @property MTLPixelFormat depthAttachmentPixelFormat();
+    @property void depthAttachmentPixelFormat(MTLPixelFormat);
+
+    /**
+        
+    */
+    @property MTLPixelFormat stencilAttachmentPixelFormat();
+    @property void stencilAttachmentPixelFormat(MTLPixelFormat);
 
     /**
         Specifies the default rendering pipeline state values for the descriptor.
