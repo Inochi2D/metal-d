@@ -9,6 +9,7 @@ module metal.rendercommandencoder;
 import metal.commandencoder;
 import metal.commandbuffer;
 import metal.depthstencil;
+import metal.renderpipeline;
 import metal.renderpass;
 import metal.argument;
 import metal.sampler;

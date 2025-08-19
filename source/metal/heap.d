@@ -213,5 +213,4 @@ public:
         The type of the heap. The default value is $(D MTLHeapType.Automatic).
     */
     @property MTLHeapType type();
-
 }

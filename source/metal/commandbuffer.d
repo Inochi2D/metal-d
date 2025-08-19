@@ -152,7 +152,7 @@ public:
     /**
         The command queue that created the command buffer.
     */
-    @property MTLCommandQueue device() const;
+    @property MTLCommandQueue queue() const;
 
     /**
         An optional name that can help you identify the command buffer.

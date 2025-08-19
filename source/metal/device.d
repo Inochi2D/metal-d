@@ -7,6 +7,7 @@
 */
 module metal.device;
 import metal.pixelformat;
+import metal.renderpipeline;
 import metal.commandqueue;
 import metal.resource;
 import metal.buffer;

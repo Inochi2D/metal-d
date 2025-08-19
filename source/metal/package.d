@@ -33,6 +33,7 @@ public import metal.heap;
 public import metal.library;
 public import metal.pixelformat;
 public import metal.rendercommandencoder;
+public import metal.renderpipeline;
 public import metal.renderpass;
 public import metal.resource;
 public import metal.sampler;
