@@ -229,7 +229,7 @@ public:
     /**
         Configures a rectangle for the fragment scissor test.
     */
-    void setScissorRect(MTLScissorRect rect) @selector("setViewport:");
+    void setScissorRect(MTLScissorRect rect) @selector("setScissorRect:");
 
     /**
         Configures multiple rectangles for the fragment scissor test.
