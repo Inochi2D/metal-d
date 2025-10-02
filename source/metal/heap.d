@@ -51,6 +51,16 @@ extern(Objective-C)
 extern class MTLHeapDescriptor : NSObject, NSCopying {
 nothrow @nogc:
 public:
+    /**
+        Returns a new instance of the receiving class.
+    */
+    override static MTLHeapDescriptor alloc() @selector("alloc");
+
+    /**
+        Implemented by subclasses to initialize a new object (the receiver) 
+        immediately after memory for it has been allocated.
+    */
+    override MTLHeapDescriptor init() @selector("init");
 
     // copyWithZone
     override id copyWithZone(NSZone* zone) @selector("copyWithZone:");

@@ -1,6 +1,7 @@
-# DUB Generated stuff
+# (Re)DUB Generated stuff
 .dub
 dub.selections.json
+.ldc2_cache/
 
 # Auto-generated docs
 docs/

@@ -170,6 +170,11 @@ public:
     @property NSUInteger heapOffset() const;
 
     /**
+        The size of the resource, in bytes.
+    */
+    @property NSUInteger allocatedSize() const;
+
+    /**
         Allows future heap resource allocations to alias against the resource’s memory, reusing it.
     */
     void makeAliasable() @selector("makeAliasable");

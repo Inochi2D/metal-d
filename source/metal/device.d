@@ -340,7 +340,7 @@ public:
     /**
         The name of a GPU device’s architecture.
     */
-    @property NSString name() const @selector("AAAAAAAAAA");
+    @property NSString name() const;
 
     /**
         Returns a new instance that’s a copy of the receiver.
@@ -560,9 +560,16 @@ public:
     bool supportsFamily(MTLGPUFamily family) @selector("supportsFamily:");
 
     /**
-        Returns a Boolean value that indicates whether the GPU supports an amplification factor.
+        Returns a Boolean value that indicates whether the GPU 
+        supports an amplification factor.
     */
     bool supportsVertexAmplificationCount(NSUInteger count) const @selector("supportsVertexAmplificationCount:");
+
+    /**
+        Returns a Boolean value that indicates whether the GPU can sample a 
+        texture with a specific number of sample points.
+    */
+    bool supportsTextureSampleCount(NSUInteger count) const @selector("supportsTextureSampleCount:");
 
     /**
         The largest amount of memory, in bytes, that a GPU device can allocate to a buffer instance.
@@ -608,6 +615,11 @@ public:
     final static NSArray!MTLDevice allDevices() {
         return MTLCopyAllDevices();
     }
+
+    /**
+        Creates a new GPU heap instance.
+    */
+    MTLHeap newHeap(MTLHeapDescriptor desc) @selector("newHeapWithDescriptor:");
 
     /**
         Creates a queue you use to submit rendering and computation commands to a GPU.

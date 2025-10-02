@@ -355,6 +355,25 @@ public:
     MTLTexture newRemoteTextureView(MTLDevice device) @selector("newRemoteTextureViewForDevice:");
 
     /**
+        Creates a new view of the texture, reinterpreting its data 
+        using a different pixel format.
+    */
+    MTLTexture newTextureView(MTLPixelFormat format) @selector("newTextureViewWithPixelFormat:");
+
+    /**
+        Creates a new view of the texture, reinterpreting a subset of 
+        its data using a different type and pixel format.
+    */
+    MTLTexture newTextureView(MTLPixelFormat format, MTLTextureType type, NSRange levelRange, NSRange sliceRange) @selector("newTextureViewWithPixelFormat:textureType:levels:slices:");
+
+    /**
+        Creates a new view of the texture, reinterpreting a subset of 
+        its data using a different type, pixel format, and 
+        swizzle pattern.
+    */
+    MTLTexture newTextureView(MTLPixelFormat format, MTLTextureType type, NSRange levelRange, NSRange sliceRange, MTLTextureSwizzleChannels swizzle) @selector("newTextureViewWithPixelFormat:textureType:levels:slices:swizzle:");
+
+    /**
         Copies pixel data into a section of a texture slice.
     */
     void replace(MTLRegion region, NSUInteger level, NSUInteger slice, const(void)* pixels, NSUInteger bytesPerRow, NSUInteger bytesPerImage) @selector("replaceRegion:mipmapLevel:slice:withBytes:bytesPerRow:bytesPerImage:");
