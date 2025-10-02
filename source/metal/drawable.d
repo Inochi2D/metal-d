@@ -174,7 +174,7 @@ public:
         managed by Core Animation.
     */
     @property NSUInteger maximumDrawableCount() @selector("maximumDrawableCount");
-    @property void wantsExtendedDynamicRangeContent(NSUInteger) @selector("setMaximumDrawableCount:");
+    @property void maximumDrawableCount(NSUInteger) @selector("setMaximumDrawableCount:");
 
     /**
         A Boolean value that determines whether requests for a new 

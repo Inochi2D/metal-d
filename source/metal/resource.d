@@ -158,6 +158,23 @@ public:
     @property MTLDevice device() const;
 
     /**
+        The location and access permissions of the resource.
+    */
+    @property MTLStorageMode storageMode() const;
+
+    /**
+        A mode that determines whether Metal tracks and 
+        synchronizes resource access.
+    */
+    @property MTLHazardTrackingMode hazardTrackingMode() const;
+
+    /**
+        The CPU cache mode that defines the CPU 
+        mapping of the resource.
+    */
+    @property MTLCPUCacheMode cpuCacheMode() const;
+
+    /**
         An optional name that can help you identify the command queue.
     */
     @property NSString label();
