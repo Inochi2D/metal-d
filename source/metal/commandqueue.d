@@ -84,6 +84,7 @@ public:
         An optional name that can help you identify the command queue.
     */
     @property NSString label();
+    @property void label(NSString value);
 
     /**
         Returns a command buffer from the command queue that maintains strong references to resources.
