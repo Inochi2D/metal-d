@@ -192,7 +192,17 @@ public:
     @property bool retainedReferences() const;
 
     /**
-        Creates a render command encoder from a descriptor.
+        Creates a block information transfer (blit) encoder.
+    */
+    MTLBlitCommandEncoder blitCommandEncoder() @selector("blitCommandEncoder");
+
+    /**
+        Creates a block information transfer (blit) encoder.
+    */
+    MTLBlitCommandEncoder blitCommandEncoder(MTLBlitPassDescriptor descriptor) @selector("blitCommandEncoderWithDescriptor:");
+
+    /**
+        Creates a block information transfer (blit) encoder from a descriptor.
     */
     MTLRenderCommandEncoder renderCommandEncoder(MTLRenderPassDescriptor descriptor) @selector("renderCommandEncoderWithDescriptor:");
 

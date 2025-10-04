@@ -75,14 +75,14 @@ public:
     /**
         Encodes a command to copy image data from a source buffer into a destination texture.
     */
-    void copy(MTLBuffer source, NSUInteger sourceOffset, NSUInteger bytesPerRow, MTLOrigin bytesPerImage, MTLSize sourceSize, // Source
+    void copy(MTLBuffer source, NSUInteger sourceOffset, NSUInteger bytesPerRow, NSUInteger bytesPerImage, MTLSize sourceSize, // Source
               MTLTexture destination, NSUInteger destinationSlice, NSUInteger destinationLevel, MTLOrigin destinationOrigin)  // Destination
               @selector("copyFromBuffer:sourceOffset:sourceBytesPerRow:sourceBytesPerImage:sourceSize:toTexture:destinationSlice:destinationLevel:destinationOrigin:");
               
     /**
         Encodes a command to copy image data from a source buffer into a destination texture.
     */
-    void copy(MTLBuffer source, NSUInteger sourceOffset, NSUInteger bytesPerRow, MTLOrigin bytesPerImage, MTLSize sourceSize, // Source
+    void copy(MTLBuffer source, NSUInteger sourceOffset, NSUInteger bytesPerRow, NSUInteger bytesPerImage, MTLSize sourceSize, // Source
               MTLTexture destination, NSUInteger destinationSlice, NSUInteger destinationLevel, MTLOrigin destinationOrigin,  // Destination
               MTLBlitOptions options) @selector("copyFromBuffer:sourceOffset:sourceBytesPerRow:sourceBytesPerImage:sourceSize:toTexture:destinationSlice:destinationLevel:destinationOrigin:options:");
               
@@ -90,7 +90,7 @@ public:
         Encodes a command that copies image data from a texture slice to a buffer.
     */
     void copy(MTLTexture source, NSUInteger sourceSlice, NSUInteger sourceLevel, MTLOrigin sourceOrigin, MTLSize sourceSize, // Source
-              MTLBuffer destination, NSUInteger destinationOffset, NSUInteger bytesPerRow, MTLOrigin bytesPerImage)          // Destination
+              MTLBuffer destination, NSUInteger destinationOffset, NSUInteger bytesPerRow, NSUInteger bytesPerImage)          // Destination
               @selector("copyFromTexture:sourceSlice:sourceLevel:sourceOrigin:sourceSize:toBuffer:destinationOffset:destinationBytesPerRow:destinationBytesPerImage:");
               
     /**
@@ -101,6 +101,11 @@ public:
               MTLBuffer destination, NSUInteger destinationOffset, NSUInteger bytesPerRow, MTLOrigin bytesPerImage,          // Destination
               MTLBlitOptions options) @selector("copyFromTexture:sourceSlice:sourceLevel:sourceOrigin:sourceSize:toBuffer:destinationOffset:destinationBytesPerRow:destinationBytesPerImage:options:");
 
+    /**
+        Encodes a command that copies data from one texture to another.
+    */
+    void copy(MTLTexture source, MTLTexture destination) @selector("copyFromTexture:toTexture:");
+    
     /**
         Encodes a command that improves the performance of the GPU’s accesses to a texture.
     */
