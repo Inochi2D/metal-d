@@ -12,7 +12,10 @@ import metal.commandqueue;
 import metal.resource;
 import metal.buffer;
 import metal.texture;
+import metal.sampler;
 import metal.library;
+import metal.fence;
+import metal.event;
 import metal;
 import iosurface;
 import foundation;
@@ -615,6 +618,15 @@ public:
     final static NSArray!MTLDevice allDevices() {
         return MTLCopyAllDevices();
     }
+    /**
+        Returns the minimum alignment the GPU device requires to create a linear texture from a buffer.
+    */
+    NSUInteger minimumLinearTextureAlignmentForPixelFormat(MTLPixelFormat format) @selector("minimumLinearTextureAlignmentForPixelFormat:");
+
+    /**
+        Returns the minimum alignment the GPU device requires to create a texture buffer from a buffer.
+    */
+    NSUInteger minimumTextureBufferAlignmentForPixelFormat(MTLPixelFormat format) @selector("minimumTextureBufferAlignmentForPixelFormat:");
 
     /**
         Creates a new GPU heap instance.
@@ -648,6 +660,33 @@ public:
     MTLTexture newTexture(MTLTextureDescriptor descriptor) @selector("newTextureWithDescriptor:");
 
     /**
+        Creates a sampler state instance.
+    */
+    MTLSamplerState newSamplerState(MTLSamplerDescriptor descriptor) @selector("newSamplerStateWithDescriptor:");
+
+    /**
+        Creates a new memory fence instance.
+    */
+    MTLFence newFence() @selector("newFence");
+
+    /**
+        Creates a new event instance that you can use to synchronize 
+        commands and resources within the same GPU device.
+    */
+    MTLEvent newEvent() @selector("newEvent");
+
+    /**
+        Creates a new memory fence instance.
+    */
+    MTLSharedEvent newSharedEvent() @selector("newSharedEvent");
+
+    /**
+        Creates a new shared event instance that you can use to 
+        synchronize commands and resources across different GPU devices.
+    */
+    MTLSharedEvent newSharedEvent(MTLSharedEventHandle handle) @selector("newSharedEventWithHandle:");
+
+    /**
         Creates a texture instance that uses an IOSurface to store its underlying data.
     */
     version(IOSurface)
@@ -664,16 +703,6 @@ public:
     MTLTexture newSharedTexture(MTLSharedTextureHandle descriptor) @selector("newSharedTextureWithHandle:");
 
     /**
-        Returns the minimum alignment the GPU device requires to create a linear texture from a buffer.
-    */
-    NSUInteger minimumLinearTextureAlignmentForPixelFormat(MTLPixelFormat format) @selector("minimumLinearTextureAlignmentForPixelFormat:");
-
-    /**
-        Returns the minimum alignment the GPU device requires to create a texture buffer from a buffer.
-    */
-    NSUInteger minimumTextureBufferAlignmentForPixelFormat(MTLPixelFormat format) @selector("minimumTextureBufferAlignmentForPixelFormat:");
-
-    /**
         Creates a Metal library instance that contains the functions 
         from your app’s default Metal library.
     */
@@ -686,7 +715,7 @@ public:
     MTLLibrary newLibrary(NSString source, MTLCompileOptions options, ref NSError error) @selector("newLibraryWithSource:options:error:");
 
     /**
-
+        Synchronously creates a render pipeline state.
     */
     MTLRenderPipelineState newRenderPipelineState(MTLRenderPipelineDescriptor descriptor, ref NSError error) @selector("newRenderPipelineStateWithDescriptor:error:");
 }
