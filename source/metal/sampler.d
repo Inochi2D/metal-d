@@ -128,6 +128,16 @@ extern (Objective-C)
 extern class MTLSamplerDescriptor : NSObject, NSCopying {
 nothrow @nogc:
 public:
+    /**
+        Returns a new instance of the receiving class.
+    */
+    override static MTLSamplerDescriptor alloc() @selector("alloc");
+
+    /**
+        Implemented by subclasses to initialize a new object (the receiver) 
+        immediately after memory for it has been allocated.
+    */
+    override MTLSamplerDescriptor init() @selector("init");
 
     /**
         A string that identifies this object.
@@ -201,6 +211,12 @@ public:
     */
     @property float lodMaxClamp();
     @property void lodMaxClamp(float);
+
+    /**
+        The level-of-detail (lod) bias when sampling from a texture.
+    */
+    @property float lodBias();
+    @property void lodBias(float);
 
     /**
         A Boolean value that specifies whether the GPU can use an average 
