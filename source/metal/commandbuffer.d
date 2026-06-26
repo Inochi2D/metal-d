@@ -9,6 +9,7 @@ module metal.commandbuffer;
 import metal.device;
 import metal.renderpass;
 import metal.commandqueue;
+import metal.computepipeline;
 import metal.commandencoder;
 import metal.rendercommandencoder;
 import metal.drawable;

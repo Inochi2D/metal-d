@@ -9,6 +9,7 @@ module metal.device;
 import metal.pixelformat;
 import metal.renderpipeline;
 import metal.commandqueue;
+import metal.computepipeline;
 import metal.resource;
 import metal.buffer;
 import metal.texture;
@@ -541,7 +542,7 @@ public:
 
         If the GPU is part of a peer group (see peerGroupID or peerCount) the
         peer index is the GPU’s unique value within the group in the 
-        range [0, peerCount).
+        range [0, peerCount$(RPAREN).
     */
     @property uint peerIndex() const @selector("peerIndex");
 

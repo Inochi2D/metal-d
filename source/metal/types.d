@@ -59,7 +59,7 @@ struct MTLRegion {
     A subpixel sample position for use in multisample antialiasing (MSAA).
 
     Subpixel sample positions are in a 16 x 16 grid across a pixel. 
-    Each subsample position’s x and y values are in 1/16 increments in the floating-point range [0.0, 15.0/16.0). 
+    Each subsample position’s x and y values are in 1/16 increments in the floating-point range [0.0, 15.0/16.0$(RPAREN). 
     The pixel’s origin point (0,0) is at the top-left corner.
 
     See [Positioning Samples Programmatically](https://developer.com/documentation/metal/render_passes/positioning_samples_programmatically) for the details on working with subpixels.

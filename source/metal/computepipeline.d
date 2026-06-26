@@ -39,6 +39,16 @@ extern interface MTLComputeCommandEncoder : MTLCommandEncoder {
     void setBuffer(MTLBuffer buffer, NSUInteger offset, NSUInteger index) @selector("setBuffer:offset:atIndex:");
 
     /**
+        Copies data directly to the GPU to populate an entry in the buffer argument table.
+
+        Params:
+            bytes = A pointer to where the data to copy starts. 
+            length = The number of bytes to copy.
+            index = The index the buffer binds to in the argument table.
+     */
+    void setBytes(void* bytes, NSUInteger length, NSUInteger index) @selector("setBytes:length:atIndex:");
+
+    /**
         Encodes a compute command using an arbitrarily sized grid.
 
         Params:
