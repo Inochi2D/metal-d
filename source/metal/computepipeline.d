@@ -49,6 +49,15 @@ extern interface MTLComputeCommandEncoder : MTLCommandEncoder {
     void setBytes(void* bytes, NSUInteger length, NSUInteger index) @selector("setBytes:length:atIndex:");
 
     /**
+        Sets the length of threadgroup memory for a shader argument at a given index.
+
+        Params:
+            length = The number of bytes to allocate for threadgroup memory.
+            index = The index of the argument in the argument table.
+    */
+    void setThreadgroupMemoryLength(NSUInteger length, NSUInteger index) @selector("setThreadgroupMemoryLength:atIndex:");
+
+    /**
         Encodes a compute command using an arbitrarily sized grid.
 
         Params:
