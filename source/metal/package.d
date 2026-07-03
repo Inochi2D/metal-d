@@ -19,6 +19,7 @@ public import metal.buffer;
 public import metal.commandbuffer;
 public import metal.commandencoder;
 public import metal.commandqueue;
+public import metal.computepipeline;
 public import metal.datatype;
 public import metal.depthstencil;
 public import metal.device;
